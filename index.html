@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>web_page</title>
+	<!--<link rel="stylesheet" href="style.css">-->
+	<style type="text/css">
+		body{
+			margin: 0 auto;
+			font-family: sans-serif;
+			font-style: normal;
+			background-color:#9C9C9C;	
+		}
+		
+		/* ## block_1 ##*/
+		
+		.wrapper_block_1 {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 0 auto;
+		}
+		.text_info {
+			display: flex;
+			justify-content: center;
+			font-size: 20px;
+			font-weight: 600;
+			text-transform: uppercase;
+			margin: 10px auto 30px;
+			color: #686876;
+			text-shadow: 0 2px 0 #000000, 0 -1px 0 #DDDAC2;
+		}
+		.switch_1 {
+			display: block;
+		    width: 108px; /*180px*/
+		    height: 30px; /*50px*/
+		    position: relative;
+		}
+		.switch_1 input {
+		    /* Вначале делаем его равным размеру контейнера, в котором он находится */
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    /* Затем, перемещаем его вверх, относительно других элементов */
+		    z-index: 100;
+		    /* Делаем его невидимым */
+		    opacity: 0;
+		    /* А это для эргономичности */
+		    cursor: pointer;
+		}
+		.switch_1 label {
+		    display: block;
+		    width: 100%;
+		    height: 100%;
+		    position: relative;
+		    background: #FF0000; /*#a5a39d*/
+		    border-radius: 40px;
+		    box-shadow:
+		        inset 0 3px 8px 1px rgba(0,0,0,0.2),
+		        0 1px 0 rgba(255,255,255,0.5);
+		}
+		.switch_1 label:after {
+		    content: "";
+		    position: absolute;
+		    z-index: -1;
+		    top: -8px; right: -8px; bottom: -8px; left: -8px;
+		    border-radius: inherit;
+		    background: #ccc; /* Fallback */
+		    background: linear-gradient(#f2f2f2, #ababab);
+		    box-shadow: 0 0 10px rgba(0,0,0,0.3),
+		        0 1px 1px rgba(0,0,0,0.25);
+		}
+		.switch_1 label:before {
+		    content: "";
+		    position: absolute;
+		    z-index: -1;
+		    top: -18px; right: -18px; bottom: -18px; left: -18px;
+		    border-radius: inherit;
+		    background: #eee; /* Fallback */
+		    background: linear-gradient(#e5e7e6, #eee);
+		    box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		    -webkit-filter: blur(1px); /* Smooth trick */
+		    filter: blur(1px); /* Future-proof */
+		}
+		.switch_1 label i {
+		    display: block;
+		    height: 100%;
+		    width: 60%;
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    z-index: 2;
+		    border-radius: inherit;
+		    background: #b2ac9e; /* Fallback */
+		    background: linear-gradient(#f7f2f6, #b2ac9e);
+		    box-shadow:
+		        inset 0 1px 0 white,
+		        0 0 8px rgba(0,0,0,0.3),
+		        0 5px 5px rgba(0,0,0,0.2);
+		}
+		.switch_1 label i:after {
+		    content: "";
+		    position: absolute;
+		    left: 15%;
+		    top: 25%;
+		    width: 70%;
+		    height: 50%;
+		    background: #d2cbc3; /* Fallback */
+		    background: linear-gradient(#cbc7bc, #d2cbc3);
+		    border-radius: inherit;
+		}
+		.switch_1 label i:before {
+		    content: "ручн";
+		    position: absolute;
+		    top: 50%;
+		    right: -62%; /*-50%*/
+		    margin-top: -8px; /*-12px*/
+		    color: #666; /* Fallback */
+		    color: rgba(0,0,0,0.4);
+		    font-style: normal;
+		    font-weight: bold;
+		    font-family: Helvetica, Arial, sans-serif;
+		    font-size: 14px; /*24px*/
+		    text-transform: uppercase;
+		    text-shadow: 0 1px 0 #6b8659, 0 -1px 0 #afcb9b; /*#bcb8ae*/ /*#97958e*/
+		}
+		.switch_1 input:checked ~ label {
+
+			background: #9abb82;
+		}
+		.switch_1 input:checked ~ label i { /* Toggle */
+		    left: auto;
+		    right: -1%;
+		}		 
+		.switch_1 input:checked ~ label i:before { /* On/off */
+		    content: "авто";
+		    right: 102%; /*115%*/
+		    color: #82a06a; /*#82a06a*/
+		    text-shadow: 0 1px 0 #afcb9b, 0 -1px 0 #6b8659; /*#afcb9b*/ /*#6b8659*/
+		}
+
+		/* ### block_2 ### */
+
+		.wrapper_block_2 {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 30px 5px 0 5px;
+			background: rgba(0, 0, 0, 0.5); #494A4B; /*#494A4B*/
+			border: ridge #ccc;
+    		border-width: 6px;
+		}
+		.wrapper_text {
+			display: flex;
+			justify-content: space-between;
+			width: 85%;
+		}
+		.sensors,
+		.valves {
+			display: block;
+			margin: 10px .5rem;
+			font-size: 16px;
+			font-weight: 600;
+			text-transform: uppercase;
+			color: #9C9C9C;
+			text-shadow: 0 -1px 0 #FFFFFF, 0 2px 0 #0A090A;
+			letter-spacing: 3px;
+		}
+		.relay_1,
+		.relay_2,
+		.relay_3,
+		.relay_4 {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 80%;
+			margin: 25px 0 25px;
+		}
+		.relay_switch_1 input,
+		.relay_switch_2 input,
+		.relay_switch_3 input,
+		.relay_switch_4 input  {
+		    /* Вначале делаем его равным размеру контейнера, в котором он находится */
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    /* Затем, перемещаем его вверх, относительно других элементов */
+		    z-index: 100;
+		    /* Делаем его невидимым */
+		    opacity: 0;
+		    /* А это для эргономичности */
+		    cursor: pointer;
+		}
+		.relay_switch_1,
+		.relay_switch_2,
+		.relay_switch_3,
+		.relay_switch_4 {
+			width: 40px;
+			height: 40px;
+			position: relative;
+			margin-bottom: 10px;
+		}
+		.relay_switch_1 label,
+		.relay_switch_2 label,
+		.relay_switch_3 label,
+		.relay_switch_4 label {
+		    display: block;
+		    width: 100%;
+		    height: 100%;
+		    position: relative;
+		    border-radius: 50%;
+		    background: #eaeaea; /*#eaeaea*/
+		    box-shadow:
+		        0 3px 5px rgba(0,0,0,0.25),
+		        inset 0 1px 0 rgba(255,255,255,0.3),
+		        inset 0 -5px 5px rgba(100,100,100,0.1),
+		        inset 0 5px 5px rgba(255,255,255,0.3);
+	    }
+	   .relay_switch_1 label:after,
+	   .relay_switch_2 label:after,
+	   .relay_switch_3 label:after,
+	   .relay_switch_4 label:after {
+		    content: "";
+		    position: absolute;
+		    z-index: -1;
+		    top: -8%;
+		    right: -8%;
+		    bottom: -8%;
+		    left: -8%;
+		    border-radius: inherit;
+		    background: #ddd; /* Fallback */
+		    background: linear-gradient(#ccc, #fff);
+		    box-shadow:
+		        inset 0 2px 1px rgba(0,0,0,0.15),
+		        0 2px 5px rgba(200,200,200,0.1);
+		}
+		.relay_switch_1 label:before,
+		.relay_switch_2 label:before,
+		.relay_switch_3 label:before,
+		.relay_switch_4 label:before {
+		    content: "";
+		    position: absolute;
+		    width: 20%;
+		    height: 20%;
+		    left: 40%;
+		    top: 40%;
+		    border-radius: inherit;
+		    background: #969696; /* Fallback */
+		    background: radial-gradient(40% 35%, #ccc, #969696 60%);
+		    box-shadow:
+		        inset 0 2px 4px 1px rgba(0,0,0,0.3),
+		        0 1px 0 rgba(255,255,255,1),
+		        inset 0 1px 0 white;
+		}
+		.relay_switch_1 input:checked ~ label,
+		.relay_switch_2 input:checked ~ label,
+		.relay_switch_3 input:checked ~ label,
+		.relay_switch_4 input:checked ~ label { /* Button */
+		    background: #e5e5e5; /* Fallback, #e5e5e5 */
+		    background: linear-gradient(#dedede, #fdfdfd);
+		}
+
+		.relay_switch_1 input:checked ~ label:before,
+		.relay_switch_2 input:checked ~ label:before,
+		.relay_switch_3 input:checked ~ label:before,
+		.relay_switch_4 input:checked ~ label:before { /* LED */
+		    background: #25d025; /* Fallback, #25d025 */
+		    background: radial-gradient(40% 35%, #5aef5a, #25d025 60%);
+		    box-shadow:
+		        inset 0 3px 5px 1px rgba(0,0,0,0.1),
+		        0 1px 0 rgba(255,255,255,0.4),
+		        0 0 10px 2px rgba(0, 210, 0, 0.5);
+		}
+		/* ### valves ### */
+
+		.switch_01,
+		.switch_02, 
+		.switch_03, 
+		.switch_04 {
+			display: block;
+		    width: 108px; /*180px*/
+		    height: 30px; /*50px*/
+		    position: relative;
+		}
+		.switch_01 input,
+		.switch_02 input,
+		.switch_03 input,
+		.switch_04 input {
+		    /* Вначале делаем его равным размеру контейнера, в котором он находится */
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    /* Затем, перемещаем его вверх, относительно других элементов */
+		    z-index: 100;
+		    /* Делаем его невидимым */
+		    opacity: 0;
+		    /* А это для эргономичности */
+		    cursor: pointer;
+		}
+		.switch_01 label,
+		.switch_02 label,
+		.switch_03 label,
+		.switch_04 label {
+		    display: block;
+		    width: 100%;
+		    height: 100%;
+		    position: relative;
+		    background: #FF0000; /*#a5a39d*/
+		    border-radius: 40px;
+		    box-shadow:
+		        inset 0 3px 8px 1px rgba(0,0,0,0.2),
+		        0 1px 0 rgba(255,255,255,0.5);
+		}
+		.switch_01 label:after,
+		.switch_02 label:after,			
+		.switch_03 label:after,			
+		.switch_04 label:after {
+		    content: "";
+		    position: absolute;
+		    z-index: -1;
+		    top: -8px; right: -8px; bottom: -8px; left: -8px;
+		    border-radius: inherit;
+		    background: #ccc; /* Fallback */
+		    background: linear-gradient(#f2f2f2, #ababab);
+		    box-shadow: 0 0 10px rgba(0,0,0,0.3),
+		        0 1px 1px rgba(0,0,0,0.25);
+		}
+		.switch_01 label:before,
+		.switch_02 label:before,		
+		.switch_03 label:before,		
+		.switch_04 label:before {
+		    content: "";
+		    position: absolute;
+		    z-index: -1;
+		    top: -18px; right: -18px; bottom: -18px; left: -18px;
+		    border-radius: inherit;
+		    background: #eee; /* Fallback */
+		    background: linear-gradient(#e5e7e6, #eee);
+		    box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		    -webkit-filter: blur(1px); /* Smooth trick */
+		    filter: blur(1px); /* Future-proof */
+		}
+		.switch_01 label i,
+		.switch_02 label i,
+		.switch_03 label i,	
+		.switch_04 label i	 {
+		    display: block;
+		    height: 100%;
+		    width: 60%;
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    z-index: 2;
+		    border-radius: inherit;
+		    background: #b2ac9e; /* Fallback */
+		    background: linear-gradient(#f7f2f6, #b2ac9e);
+		    box-shadow:
+		        inset 0 1px 0 white,
+		        0 0 8px rgba(0,0,0,0.3),
+		        0 5px 5px rgba(0,0,0,0.2);
+		}
+		.switch_01 label i:after,
+		.switch_02 label i:after,
+		.switch_03 label i:after,
+		.switch_04 label i:after {
+		    content: "";
+		    position: absolute;
+		    left: 15%;
+		    top: 25%;
+		    width: 70%;
+		    height: 50%;
+		    background: #d2cbc3; /* Fallback */
+		    background: linear-gradient(#cbc7bc, #d2cbc3);
+		    border-radius: inherit;
+		}
+		.switch_01 label i:before, 
+		.switch_02 label i:before,
+		.switch_03 label i:before,
+		.switch_04 label i:before {
+		    content: "выкл";
+		    position: absolute;
+		    top: 50%;
+		    right: -62%; /*-50%*/
+		    margin-top: -6px; /*-12px*/
+		    color: #666; /* Fallback */
+		    color: rgba(0,0,0,0.4);
+		    font-style: normal;
+		    font-weight: bold;
+		    font-family: Helvetica, Arial, sans-serif;
+		    font-size: 13px; /*24px*/
+		    text-transform: uppercase;
+		    text-shadow: 0 1px 0 #6b8659, 0 -1px 0 #afcb9b; /*#bcb8ae*/ /*#97958e*/
+		}
+		.switch_01 input:checked ~ label,
+		.switch_02 input:checked ~ label,
+		.switch_03 input:checked ~ label,
+		.switch_04 input:checked ~ label {
+
+			background: #9abb82;
+		}
+		.switch_01 input:checked ~ label i,
+		.switch_02 input:checked ~ label i,
+		.switch_03 input:checked ~ label i,
+		.switch_04 input:checked ~ label i { /* Toggle */
+		    left: auto;
+		    right: -1%;
+		}		 
+		.switch_01 input:checked ~ label i:before, 
+		.switch_02 input:checked ~ label i:before,
+		.switch_03 input:checked ~ label i:before,
+		.switch_04 input:checked ~ label i:before { /* On/off */
+		    content: "вкл";
+		    right: 110%; /*115%*/
+		    color: #82a06a; /*#82a06a*/
+		    text-shadow: 0 1px 0 #afcb9b, 0 -1px 0 #6b8659; /*#afcb9b*/ /*#6b8659*/
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper_block_1">
+		<p class="text_info">выбор режима управления</p>
+		<div class="switch_1">
+			<input type="checkbox" checked="">
+			<label><i></i></label>
+		</div>
+	</div>
+	<div class="wrapper_block_2">
+		<div class="wrapper_text">
+			<p class="sensors">датчики</p>
+			<p class="valves">клапаны</p>
+		</div>
+		<div class="relay_1">
+			<div class="relay_switch_1">
+				<input type="checkbox">
+				<label></label>
+			</div>
+			<div class="switch_01">
+				<input type="checkbox">
+				<label><i class='icon-off'></i></label>
+			</div>
+		</div>
+		<div class="relay_2">
+			<div class="relay_switch_2">
+				<input type="checkbox">
+				<label></label>
+			</div>
+			<div class="switch_02">
+				<input type="checkbox">
+				<label><i class='icon-off'></i></label>	
+			</div>
+		</div>
+		<div class="relay_3">
+			<div class="relay_switch_3">
+				<input type="checkbox">
+				<label></label>
+			</div>
+			<div class="switch_03">
+				<input type="checkbox">
+				<label><i class='icon-off'></i></label>
+			</div>
+		</div>
+		<div class="relay_4">
+			<div class="relay_switch_4">
+				<input type="checkbox">
+				<label></label>
+			</div>
+			<div class="switch_04">
+				<input type="checkbox">
+				<label><i class='icon-off'></i></label>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
